@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Album example · Bootstrap</title>
+
+
+
+    <title>Product Hunt</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -17,7 +17,10 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
     <link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="manifest" href="/docs/4.5/assets/img/favicons/manifest.json">
@@ -51,7 +54,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{% url 'p-home' %}">
                     <img src="{% static 'logo.png' %}" class="img-fluid align-middle mr-1" alt="" height="50px"
                         width="50px">
                     Producthunt
@@ -64,6 +67,8 @@
                     <div class="navbar-nav ml-auto">
                         {% if user.is_authenticated %}
 
+                        <a class="nav-link" href="{% url 'create-product' %}"><span class="fas fa-plus"></span> New
+                        </a>
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         {% else %}
                         <a class="nav-link" href="{% url 'login' %}">Login</a>
