@@ -2,8 +2,9 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="row">
-    <div class="col-md-3">
-        <img src="{{product.icon.url}}" alt="" class="img-fluid">
+    <div class="col-md-3 mb-3">
+        <a href="{{product.url}}">
+            <img src="{{product.icon.url}}" alt="" class="img-fluid"></a>
     </div>
     <div class="col-md-8">
         <a href="{{product.url}}">{{product.title}}</a>
@@ -11,7 +12,8 @@
 </div>
 <div class="row">
     <div class="col-md-8">
-        <img src="{{product.image.url}}" alt="" class="img-fluid">
+        <a href="{{product.url}}">
+            <img src="{{product.image.url}}" alt="" class="img-fluid"></a>
         <div class="d-flex">
             <h3 class="float-left"><i class="fas fa-search"></i>{{product.hunter}}</h3>
             <h3 class="ml-auto"><i class="fas fa-clock"></i>{{product.pub_date|date:'M d, Y'}}</h3>
@@ -19,14 +21,11 @@
         <p class="lead">{{product.body}}</p>
     </div>
     <div class="col-md-4">
-        <a href="javascript:{document.getElementById('upvote').submit()}" class="btn btn-primary btn-block"><i
-                class="fas fa-thumbs-up"></i> Votes{{product.votes_total}}</a>
+        <a href="{% url 'vote-cast' product.id %}" class="btn btn-primary btn-block"><i class="fas fa-thumbs-up"></i>
+            Votes{{product.votes_total}}</a>
     </div>
 </div>
-<form action="{% url 'vote-cast' product.id %}" method="POST" id="upvote">
-    {% csrf_token %}
-    <input type="hidden">
-</form>
+
 
 
 {% endblock content%}

@@ -28,8 +28,8 @@ class productDetailView(LoginRequiredMixin, DetailView):
 
 
 def votes(request, vote_pk):
-    if request.method == 'POST':
-        vote = get_object_or_404(Product, pk=vote_pk)
-        vote.votes_total += 1
-        vote.save()
-        return redirect(vote)
+
+    vote = get_object_or_404(Product, pk=vote_pk)
+    vote.votes_total += 1
+    vote.save()
+    return redirect(vote)

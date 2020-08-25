@@ -5,21 +5,22 @@
 <div class="row mb-3">
 
     <div class="col-md-2">
-        <img src="{{product.icon.url}}" alt="" class="img-fluid">
+        <a href="{% url 'product-detail' product.id %}">
+            <img src="{{product.icon.url}}" alt="" class="img-fluid">
+        </a>
+
     </div>
     <div class="col-md-8">
         <h4 class="display-5"><a href="{% url 'product-detail' product.id %}">{{product.title}}</a></h4>
-        <p class="lead">{{product.summary}}</p>
+        <p class="lead"><a href="{% url 'product-detail' product.id %}" class="text-dark"
+                style="text-decoration:none">{{product.summary}}</a></p>
     </div>
     <div class="col-md-2">
-        <a href="javascript:{document.getElementById('upvote{{product.id}}').submit()}"
-            class="btn btn-primary btn-block"><i class="fas fa-thumbs-up"> Votes{{product.votes_total}}</i></a>
+        <a href="{% url 'vote-cast' product.id %}" class="btn btn-primary btn-block"><i class="fas fa-thumbs-up">
+                Votes{{product.votes_total}}</i></a>
     </div>
 
 </div>
-<form action="{% url 'vote-cast' product.id %}" method="POST" id="upvote{{product.id}}">
-    {% csrf_token %}
-    <input type="hidden">
-</form>
+
 {% endfor %}
 {% endblock content%}
